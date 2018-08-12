@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-bluetoothevent" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>BluetoothEvent</name>
+	<js-module name="BluetoothEvent" src="www/BluetoothEvent.js">
+		<clobbers target="cordova.plugins.BluetoothEvent" />
+	</js-module>
+
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="BluetoothEvent">
+				<param name="android-package" value="ro.sebastiani.cordova.bluetoothevent.BluetoothEvent" />
+			</feature>
+		</config-file>
+
+		<config-file parent="/*" target="AndroidManifest.xml">
+		</config-file>
+
+		<config-file parent="/manifest" target="AndroidManifest.xml">
+			<uses-permission android:name="android.permission.BLUETOOTH"/>
+		</config-file>
+
+		<config-file parent="/manifest/application" target="AndroidManifest.xml">
+			<service
+        		    android:name="ro.sebastiani.cordova.bluetoothevent.BluetoothEventService"
+		            android:exported="false"/>
+			<receiver
+        		    android:name="ro.sebastiani.cordova.bluetoothevent.BluetoothEventReceiver">
+				<intent-filter>
+					<action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+				</intent-filter>
+			</receiver>
+		</config-file>
+		
+		<source-file src="src/android/BluetoothEvent.java" target-dir="src/ro/sebastiani/cordova/bluetoothevent/BluetoothEvent" />
+		<source-file src="src/android/BluetoothEventService.java" target-dir="src/ro/sebastiani/cordova/bluetoothevent/BluetoothEventService" />
+		<source-file src="src/android/BluetoothEventReceiver.java" target-dir="src/ro/sebastiani/cordova/bluetoothevent/BluetoothEventReceiver" />
+	</platform>
+</plugin>
