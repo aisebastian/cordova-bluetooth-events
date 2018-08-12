@@ -1,8 +1,12 @@
 {
-  "name": "ro.sebastiani.cordova.bluetoothevent",
+  "name": "cordova-bluetooth-events",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aisebastian/cordova-bluetooth-events"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
